@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RDM_UNIVERSE</title>
+
+    <!-- Fav Icon -->
+    <link rel="shortcut icon" href="/img/Facion.jpg" type="image/x-icon" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Calligraffitti&family=Coming+Soon&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Feather Icon -->
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <!-- My Style -->
+    <link rel="stylesheet" href="css/style.css " />
+
+    <!-- AlpineJS -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+  </head>
+
+  <body>
+    <!-- Navbar Strat -->
+    <nav class="navbar">
+      <img
+        class="navbar-logo"
+        src="RDM_UNIVERSE.png"
+        width="20%"
+        height="20%"
+      />
+
+      <div class="navbar-nav">
+        <a href="#Home">Beranda</a>
+        <a href="#aboutme">Tentang kami</a>
+        <a href="#katalog">Katalog</a>
+      </div>
+
+      <div class="navbar-extra">
+        <a href="#" id="search-button"><i data-feather="search"></i></a>
+        <a href="#" id="shopping-cart-button"
+          ><i data-feather="shopping-cart"></i
+        ></a>
+        <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
+      </div>
+
+      <!-- Search Form Strat -->
+      <div class="search-form">
+        <input type="search" id="Search-Box" placeholder="Search here..." />
+        <label for="Search-Box"><i data-feather="search"></i></label>
+      </div>
+      <!-- Search Form end -->
+
+      <!-- Shopping cart Strat -->
+      <div class="shooping-cart">
+        <div class="cart-item">
+          <img src="img/VOL 1.jpg" alt="VOL1" />
+          <div class="item-detail">
+            <h3>VOL 1</h3>
+            <div class="item-price">IDR 150k</div>
+          </div>
+          <i data-feather="trash-2" class="remove-item"></i>
+        </div>
+        <div class="cart-item">
+          <img src="img/VOL 1.jpg" alt="VOL1" />
+          <div class="item-detail">
+            <h3>VOL 1</h3>
+            <div class="item-price">IDR 150k</div>
+          </div>
+          <i data-feather="trash-2" class="remove-item"></i>
+        </div>
+      </div>
+      <!-- Shopping cart end -->
+    </nav>
+
+    <!-- Navbar end -->
+
+    <!-- Hero Section Strat -->
+    <section class="hero" id="Home">
+      <main class="content">
+        <h1><span>Crafted for Your</span> Everyday Look</h1>
+        <p>
+          Kenyamanan, kualitas, dan desain yang berbicara lebih dari kata-kata.
+        </p>
+        <a href="Produk/indexproduk.html" class="cta">Beli Sekarang</a>
+      </main>
+    </section>
+    <!-- Hero Section end -->
+
+    <!-- About Section Strat -->
+    <section id="aboutme" class="about">
+      <h2><span>Tentang</span> Kami</h2>
+
+      <div class="row">
+        <div class="about-img">
+          <img src="img/Tentang Kami.jpg" alt="Tentang Kami" />
+        </div>
+        <div class="content">
+          <h3>Kenapa Memilih Produk ini?</h3>
+          <p>
+            Karena setiap orang punya gaya dan cerita sendiri, dan produk ini
+            dibuat untuk nemenin perjalanan itu. Kami nggak cuma bikin pakaian
+            yang enak dipakai, tapi sesuatu yang bisa bikin kamu merasa “ini gue
+            banget.”Dari bahan yang nyaman dipakai seharian, sampai detail
+            desain yang dibuat dengan hati—semua dirancang supaya kamu bisa
+            tampil percaya diri tanpa harus pura-pura jadi orang lain.Ini bukan
+            sekadar pakaian, tapi bagian kecil dari identitas kamu. Dan kami
+            senang bisa jadi bagian dari itu.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="owner-section">
+      <h2>Owner <span>RDM</span></h2>
+
+      <div class="owner-wrapper">
+        <!-- UZI kiri -->
+        <div class="owner-card">
+          <img src="img/owner1.jpg" alt="Uzi" />
+          <h3>UZI</h3>
+          <p>
+            Saya Uzi salah satu founder RDM Universe yang fokus pada
+            pengembangan konsep dan arah brand. Ia dikenal detail-oriented dan
+            memastikan setiap rilisan tetap membawa karakter khas distro:
+            sederhana, berani, dan punya makna. Perannya banyak bergerak di
+            balik layar untuk menjaga identitas visual dan kualitas setiap
+            produk.
+          </p>
+        </div>
+
+        <!-- FARIS kanan -->
+        <div class="owner-card">
+          <img src="img/owner2.jpg" alt="Faris Vero" />
+          <h3>Faris Vero</h3>
+          <p>
+            Saya Faris Vero berperan sebagai kreator yang menangani gaya, tone, dan
+            feel dari setiap koleksi. Ia mendorong agar setiap desain tidak
+            hanya terlihat menarik, tapi juga relevan dengan kultur anak muda.
+            Dengan pendekatan yang lebih fleksibel dan eksploratif, Faris
+            menjadi penyeimbang dinamika kreatif dalam RDM Universe.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section end -->
+
+    <!-- Katalog Section Strat -->
+    <section id="katalog" class="katalog">
+      <h2><span>Katalog</span> Kami</h2>
+      <p>
+        Setiap koleksi di sini dibuat untuk kamu yang ingin tampil apa adanya,
+        tanpa harus meninggalkan gaya. Ini adalah ruang di mana kreativitas,
+        kenyamanan, dan identitas bertemu—semua dalam bentuk pakaian yang siap
+        nemenin hari-harimu.
+      </p>
+
+      <div class="row">
+        <div class="katalog-card">
+          <img src="img/VOL 1.jpg" alt="V1" class="katalog-card-img" />
+          <h3 class="katalog-card-title">Vol 1.</h3>
+        </div>
+        <div class="katalog-card">
+          <img src="img/VOl 2.jpg" alt="V1" class="katalog-card-img" />
+          <h3 class="katalog-card-title">Vol 2.</h3>
+        </div>
+      </div>
+    </section>
+
+    <!-- Katalog Section end -->
+
+    <!-- Footer strat -->
+    <footer>
+      <div class="socials">
+        <a href="https://www.instagram.com/rdm_universe?igsh=b2toMW5qaHV1dGM4"><i class="fa-brands fa-square-instagram"></i>></a>
+        <a href="https://www.tiktok.com/@rdmunistore?_r=1&_t=ZS-91ay2zzO1bg "><i class="fa-brands fa-tiktok"></i></a>
+      </div>
+      <div class="links">
+        <a href="#">Beranda</a>
+        <a href="#">Tentang Kami</a>
+        <a href="#">Katalog</a>
+      </div>
+
+      <div class="created">
+        <p>Created by <a href="">Tauhid Al Shihab</a> | &copy; 2025</p>
+      </div>
+    </footer>
+    <!-- Footer end -->
+
+    <!-- Feather Icons -->
+    <script>
+      feather.replace();
+    </script>
+
+    <!-- my javascript -->
+    <script src="js/script.js"></script>
+  </body>
+</html>

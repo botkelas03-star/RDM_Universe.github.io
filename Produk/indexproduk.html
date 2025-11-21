@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Produk Kami</title>
+
+    <!-- Fav Icon -->
+    <link rel="shortcut icon" href="/img/Facion.jpg" type="image/x-icon" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Calligraffitti&family=Coming+Soon&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Feather Icon -->
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <!-- Style -->
+    <link rel="stylesheet" href="../Produk/CSS/style-produk.css" />
+
+    <!-- AlpineJS -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+
+    <script src="src/app.js" async></script>
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar" x-data>
+      <img
+        class="navbar-logo"
+        src="../RDM_UNIVERSE.png"
+        width="20%"
+        height="20%"
+      />
+
+      <div class="navbar-nav">
+        <a href="../index.html">Beranda</a>
+        <a href="../index.html#aboutme">Tentang kami</a>
+        <a href="../index.html#katalog">Katalog</a>
+        <a href="#">Produk</a>
+      </div>
+
+      <div class="navbar-extra">
+        <a href="#" id="search-button"><i data-feather="search"></i></a>
+        <a href="#" id="shopping-cart-button">
+          <i data-feather="shopping-cart"></i>
+          <span
+            class="quantity-badge"
+            x-show="$store.cart.quantity"
+            x-text="$store.cart.quantity"
+          ></span>
+        </a>
+        <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
+      </div>
+
+      <!-- Search Form -->
+      <div class="search-form">
+        <input type="search" id="search-box" placeholder="Search here..." />
+        <label for="search-box"><i data-feather="search"></i></label>
+      </div>
+
+      <!-- Shopping Cart -->
+      <div class="shopping-cart">
+        <template x-for="(item,index) in $store.cart.items" x-keys="index">
+          <div class="cart-item">
+            <img :src="`/img/${item.img}`" :alt="item.name" />
+            <div class="item-detail">
+              <h3 x-text="item.detail"></h3>
+              <div class="item-price">
+                <span x-text="rupiah(item.price)"></span> &times;
+                <button id="remove" @click="$store.cart.remove(item.id)">
+                  &minus;
+                </button>
+                <span x-text="item.quantity"></span>
+                <button id="add" @click="$store.cart.add(item)">&plus;</button
+                >&equals;
+                <span x-text="rupiah(item.total)"></span>
+              </div>
+            </div>
+          </div>
+        </template>
+        <h4 x-show="$store.cart.items.length === 0" style="margin-top: 1rem">
+          Cart is Empty
+        </h4>
+        <h4 x-show="$store.cart.items.length > 0">
+          Total : <span x-text="rupiah($store.cart.total)"></span>
+        </h4>
+
+        <div class="form-container" x-show="$store.cart.items.length > 0">
+          <form action="" id="checkoutForm">
+            <input
+              type="hidden"
+              name="items"
+              x-model="JSON.stringify($store.cart.items)"
+            />
+            <input type="hidden" name="total" x-model="$store.cart.items" />
+            <h5>Customer Detail</h5>
+
+            <label for="name">
+              <span>name</span>
+              <input type="text" name="name" id="name" />
+            </label>
+            <label for="email">
+              <span>email</span>
+              <input type="email" name="email" id="email" />
+            </label>
+            <label for="phone">
+              <span>phone</span>
+              <input type="number" name="phone" id="phone" autocomplete="off" />
+            </label>
+
+            <button
+              class="checkout-button disabled"
+              type="submit"
+              id="checkout-button"
+              value="checkout"
+            >
+              Checkout
+            </button>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Product Strat -->
+    <section class="produk" id="produk" x-data="products">
+      <h2>Produk <span>Kami</span></h2>
+      <div class="row">
+        <template x-for="(item, index) in items" x-key="index">
+          <div class="produk-card">
+            <div class="produk-image">
+              <img :src="`../img/${item.img}`" :alt="item.name" />
+            </div>
+            <div class="produk-icons">
+              <a href="#" @click.prevent="$store.cart.add(item)">
+                <svg
+                  width="24"
+                  height="24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <use href="/img/feather-sprite.svg#shopping-cart" />
+                </svg>
+              </a>
+              <a
+                href="#"
+                class="item-detail-button"
+                :data-name="item.name"
+                :data-img="item.img"
+                :data-desc="item.desc"
+                :data-price="item.price"
+              >
+                <svg
+                  width="24"
+                  height="24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <use href="/img/feather-sprite.svg#eye" />
+                </svg>
+              </a>
+            </div>
+            <div class="produk-content">
+              <h3 x-text="item.name"></h3>
+              <div class="produk-stars">
+                <svg
+                  width="24"
+                  height="24"
+                  fill="currentColor"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <use href="/img/feather-sprite.svg#star" />
+                </svg>
+                <svg
+                  width="24"
+                  height="24"
+                  fill="currentColor"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <use href="/img/feather-sprite.svg#star" />
+                </svg>
+                <svg
+                  width="24"
+                  height="24"
+                  fill="currentColor"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <use href="/img/feather-sprite.svg#star" />
+                </svg>
+                <svg
+                  width="24"
+                  height="24"
+                  fill="currentColor"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <use href="/img/feather-sprite.svg#star" />
+                </svg>
+                <svg
+                  width="24"
+                  height="24"
+                  fill="currentColor"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <use href="/img/feather-sprite.svg#star" />
+                </svg>
+              </div>
+              <div class="produk-price" x-text="rupiah(item.price)"></div>
+            </div>
+          </div>
+        </template>
+      </div>
+      <p>
+        Koleksi ini dibuat dengan pendekatan desain yang sederhana namun
+        bermakna. Setiap detail dirancang untuk menghadirkan kesan tegas,
+        tenang, dan autentik.
+      </p>
+    </section>
+    <!-- Product end -->
+
+    <!-- Modal Box Detail Items Strat -->
+    <div class="modal" id="item-detail-modal">
+      <div class="modal-container">
+        <a href="#" class="close-icon"><i data-feather="x"></i></a>
+        <div class="modal-content">
+          <img src="/img/VOL 1.jpg" alt="VOL1" />
+          <div class="product-content">
+            <h3>VOL 1</h3>
+            <p>
+              Kaos ini dibuat dari bahan katun premium yang lembut, adem, dan
+              nyaman dipakai seharian. Cutting-an regular fit memberikan
+              tampilan rapi tanpa mengurangi ruang gerak. Sablon menggunakan
+              teknik high-density yang kuat dan tidak mudah retak, cocok untuk
+              dipakai harian maupun hangout. Setiap detail dirancang untuk
+              memberikan vibe distro yang autentik dan stylish.
+            </p>
+            <div class="produk-stars">
+              <i data-feather="star" class="star-full"></i>
+              <i data-feather="star" class="star-full"></i>
+              <i data-feather="star" class="star-full"></i>
+              <i data-feather="star" class="star-full"></i>
+              <i data-feather="star" class="star-full"></i>
+            </div>
+            <div class="produk-price">IDR 150K</div>
+            <a href="#"
+              ><i data-feather="shopping-cart"></i><span>add to chart</span></a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal Box Detail Items end -->
+
+    <!-- Footer strat -->
+    <footer>
+      <div class="socials">
+        <a href="#"><i class="fa-brands fa-square-instagram"></i>></a>
+        <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+      </div>
+      <div class="links">
+        <a href="#">Beranda</a>
+        <a href="#">Tentang Kami</a>
+        <a href="#">Katalog</a>
+      </div>
+
+      <div class="created">
+        <p>Created by <a href="">Tauhid Al Shihab</a> | &copy; 2025</p>
+      </div>
+    </footer>
+    <!-- Footer end -->
+
+    <script>
+      feather.replace();
+    </script>
+    <script src="../Produk/js/script-produk.js" defer></script>
+  </body>
+</html>
